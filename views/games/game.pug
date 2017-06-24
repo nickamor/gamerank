@@ -1,0 +1,8 @@
+
+extends ../layout
+
+block content
+    h1= game.name
+    img(src=game.image.screen_url) 
+    p #{game.deck} 
+    a(href=game.site_detail_url) more

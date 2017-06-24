@@ -1,0 +1,8 @@
+
+form
+    input(type='search' ng-model='query')
+    input(type='submit' ng-click='search(query)' value='Search')
+ul(ng-show='games.length')
+    li(ng-repeat='game in games')
+        a(href='/#!/game/{{ game.id }}' title='title') {{ game.name }}
+p(ng-hide='games.length') No games found
