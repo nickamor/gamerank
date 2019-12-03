@@ -1,25 +1,29 @@
 
-let gulp = require('gulp')
+const gulp = require("gulp");
 
-let concat = require('gulp-concat')
-let uglify = require('gulp-uglify')
-let watch = require('gulp-watch')
+const concat = require("gulp-concat");
+const uglify = require("gulp-uglify");
+const watch = require("gulp-watch");
 
-let sources = [
-    'node_modules/angular/angular.js',
-    'node_modules/angular-route/angular-route.js',
-    'public/scripts/base.js'
-]
+const sources = [
+    "node_modules/angular/angular.js",
+    "node_modules/angular-route/angular-route.js",
+    "public/scripts/base.js"
+];
 
-gulp.task('scripts', () => {
+const scripts = () => {
     gulp.src(sources)
-        .pipe(concat('app.js'))
+        .pipe(concat("app.js"))
         // .pipe(uglify())
-        .pipe(gulp.dest('public/scripts/'))
-})
+        .pipe(gulp.dest("public/scripts/"));
+};
 
-gulp.task('watch', () => {
-    gulp.watch(sources, ['scripts'])
-})
+const watch = () => {
+    gulp.watch(sources, ["scripts"]);
+};
 
-gulp.task('default', ['scripts', 'watch'])
+const default = gulp.series(scripts, watch);	
+
+exports.scripts = scripts;
+exports.watch = watch;
+exports.default = default;
